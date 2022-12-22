@@ -18,19 +18,19 @@ const managerPrompt = () => {
         {
             type: "input",
             name: "managerName",
-            message: "Enter your manager's name."
+            message: "Enter manager's name:"
         }, {
             type: "input",
             name: "managerId",
-            message: "Enter your manager's ID."
+            message: "Enter manager's ID:"
         }, {
             type: "input",
             name: "managerEmail",
-            message: "Enter your manager's email"
+            message: "Enter manager's email:"
         }, {
             type: "input",
             name: "managerOfficeNum",
-            message: "Enter your manager's office number."
+            message: "Enter manager's office number:"
         }
     ]) 
     .then(managerData => {
@@ -45,7 +45,7 @@ const employeePrompt = () => {
         {
             type: "list",
             name: "employee",
-            message: "Which type of employee would you like to add?",
+            message: "Which type of employee would you like to add?:",
             choices: [
                 "Engineer",
                 "Intern"
@@ -53,8 +53,16 @@ const employeePrompt = () => {
         }, {
             type: "input",
             name: "employeeName",
-            message: "Enter the name of the employee"
+            message: "Enter employee's name:"
         }, {
+            type: "input",
+            name: "empoyeeId",
+            message: "Enter employee's ID:"
+        },{
+            type: "input",
+            name: "employeeEmail",
+            message: "Enter employee's email address:"
+        },{
             type: "input",
             name: "github",
             message: "If Engineer, enter Githib username.",
@@ -69,7 +77,7 @@ const employeePrompt = () => {
         }, {
             type: "input",
             name: "school",
-            message: "Enter the name of the school the intern attended",
+            message: "Enter the name of the school the intern attended:",
             when: ({employee}) => {
                 if (employee === "Intern") {
                     return true;
@@ -87,9 +95,8 @@ const employeePrompt = () => {
                 "No"
             ]
         }
-
-        // add ID and email
     ])
+
     .then(employeeData => {
         if (employeeData.employee === "Engineer") {
             const newEmployee = new Engineer(employeeData.employeeName, employeeData.github)
@@ -115,7 +122,7 @@ const writeFile = data => {
             console.log(err);
             return;
         }
-        console.log("page is being created.");
+        console.log("page is being created");
     });
 }
 
