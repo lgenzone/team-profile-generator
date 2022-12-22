@@ -40,4 +40,88 @@ const managerPrompt = () => {
     }) 
 }; 
 
-managerPrompt();
+const employeePrompt = () => {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "employee",
+            message: "Which type of employee would you like to add?",
+            choices: [
+                "Engineer",
+                "Intern"
+            ]
+        }, {
+            type: "input",
+            name: "employeeName",
+            message: "Enter the name of the employee"
+        }, {
+            type: "input",
+            name: "github",
+            message: "If Engineer, enter Githib username.",
+            when: ({employee}) => {
+                if (employee === "Engineer") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        }, {
+            type: "input",
+            name: "school",
+            message: "Enter the name of the school the intern attended",
+            when: ({employee}) => {
+                if (employee === "Intern") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        }, {
+            type: "list",
+            name: "confirmAddNew",
+            message: "Would you like to add another employee?",
+            choices: [
+                "Yes",
+                "No"
+            ]
+        }
+
+        // add ID and email
+    ])
+    .then(employeeData => {
+        if (employeeData.employee === "Engineer") {
+            const newEmployee = new Engineer(employeeData.employeeName, employeeData.github)
+            teamArray.push(newEmployee);
+        } else if (employeeData.employee === "Intern") {
+            const newEmployee = new Intern(employeeData.employeeName, employeeData.school) 
+            teamArray.push(newEmployee);
+        }
+
+        if (employeeData.confirmAddNew === "Yes") 
+        return employeePrompt();
+        else if (employeeData.confirmAddNew === "No")
+        return teamArray;
+        console.log(teamArray);
+    }) 
+    
+};
+
+const writeFile = data => {
+    console.log(data);
+    fs.writeFile("./dist/index.html", data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log("page is being created.");
+    });
+}
+
+
+managerPrompt()
+.then(employeePrompt)
+.then(teamArray => generateHTML(teamArray))
+.then(pageHTML => writeFile(pageHTML));
+
