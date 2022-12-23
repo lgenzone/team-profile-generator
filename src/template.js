@@ -8,9 +8,11 @@ const htmlBlocks = function (teamMembers) {
 function appendManager (manager) {
     return `
     <h2>${manager.name}</h2>
-    <p>ID: ${manager.id}</p>
-    <p>Email: ${manager.email}</p>
-    <p>Office #: ${manager.officeNumber}</p>
+    <ul>
+        <li><span class="title">ID: </span>${manager.id}</li>
+        <li><span class="title">Email: </span>${manager.email}</li>
+        <li><span class="title">Office #: </span>${manager.officeNumber}</li>
+    </ul>
     `
 
 }
@@ -18,24 +20,24 @@ function appendManager (manager) {
 function appendEngineer (employee) {
     return `
     <h2>${employee.name}</h2>
-    <p>ID: ${employee.id}</p>
-    <p>Email: ${employee.email}</p>
-    <p>GitHub: ${employee.github}</p>
+    <ul>
+        <li><span class="title">ID: </span>${employee.id}</li>
+        <li><span class="title">Email: </span>${employee.email}</li>
+        <li><span class="title">GitHub: </span>${employee.github}</li>
+    </ul>
     `
 }
 
 function appendIntern (employee) {
     return `
     <h2>${employee.name}</h2>
-    <p>ID: ${employee.id}</p>
-    <p>Email: ${employee.email}</p>
-    <p>School: ${employee.school}</p>
+    <ul>
+        <li><span class="title">ID: </span>${employee.id}</li>
+        <li><span class="title">Email: </span>${employee.email}</li>
+        <li><span class="title">School: </span>${employee.school}</li>
+    </ul>
     `
 }
-
-
-
-
 
 
 
@@ -52,5 +54,9 @@ function generateHTML(teamArray) {
 
     return htmlBlocks(employeeCard.join(''));
 };
+
+
+
+
 
 module.exports = generateHTML;
