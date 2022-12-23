@@ -56,7 +56,7 @@ const employeePrompt = () => {
             message: "Enter employee's name:"
         }, {
             type: "input",
-            name: "empoyeeId",
+            name: "employeeId",
             message: "Enter employee's ID:"
         },{
             type: "input",
@@ -99,10 +99,10 @@ const employeePrompt = () => {
 
     .then(employeeData => {
         if (employeeData.employee === "Engineer") {
-            const newEmployee = new Engineer(employeeData.employeeName, employeeData.github)
+            const newEmployee = new Engineer(employeeData.employeeName, employeeData.employeeId, employeeData.employeeEmail, employeeData.github)
             teamArray.push(newEmployee);
         } else if (employeeData.employee === "Intern") {
-            const newEmployee = new Intern(employeeData.employeeName, employeeData.school) 
+            const newEmployee = new Intern(employeeData.employeeName, employeeData.employeeId, employeeData.employeeEmail, employeeData.school) 
             teamArray.push(newEmployee);
         }
 
