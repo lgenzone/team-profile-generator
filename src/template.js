@@ -1,10 +1,3 @@
- //const htmlBlocks = function (teamMembers) {
-// return `
-// <div> ${teamMembers} </div>
-
-// `
-//}
-
 function appendManager(manager) {
     return `
         <div class="card employee-card">
@@ -13,9 +6,9 @@ function appendManager(manager) {
         </div>
         <div class="card-body"> 
             <ul class="list-group">
-                <li class="list-group-item">ID: </span>${manager.id}</li>
-                <li class="list-group-item">Email: </span>${manager.email}</li>
-                <li class="list-group-item">GitHub: </span>${manager.officeNumber}</li>
+                <li class="list-group-item">ID: ${manager.id}</li>
+                <li class="list-group-item">Email: ${manager.email}</li>
+                <li class="list-group-item">GitHub: ${manager.officeNumber}</li>
             </ul>
         </div>
     </div>
@@ -31,9 +24,9 @@ function appendEngineer(employee) {
         </div>
         <div class="card-body"> 
             <ul class="list-group">
-                <li class="list-group-item">ID: </span>${employee.id}</li>
-                <li class="list-group-item">Email: </span>${employee.email}</li>
-                <li class="list-group-item">GitHub: </span>${employee.github}</li>
+                <li class="list-group-item">ID: ${employee.id}</li>
+                <li class="list-group-item">Email: ${employee.email}</li>
+                <li class="list-group-item">GitHub: ${employee.github}</li>
             </ul>
         </div>
     </div>
@@ -49,9 +42,9 @@ function appendIntern(employee) {
         </div>
         <div class="card-body"> 
             <ul class="list-group">
-                <li class="list-group-item">ID: </span>${employee.id}</li>
-                <li class="list-group-item">Email: </span>${employee.email}</li>
-                <li class="list-group-item">School: </span>${employee.school}</li>
+                <li class="list-group-item">ID: ${employee.id}</li>
+                <li class="list-group-item">Email: ${employee.email}</li>
+                <li class="list-group-item">School: ${employee.school}</li>
             </ul>
         </div>
     </div>
@@ -89,7 +82,7 @@ function generateHTML(teamArray) {
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 jumbotron mb-3 team-heading bg-danger">
+                <div class="col-12 jumbotron mb-3 team-heading bg-success">
                     <h1 class="text-center text-white">Meet the Team!</h1>
                 </div>
             </div>
