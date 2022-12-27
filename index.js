@@ -122,7 +122,7 @@ const writeFile = data => {
             console.log(err);
             return;
         }
-        console.log("page is being created");
+        console.log("Page has been created.");
     });
 }
 

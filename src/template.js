@@ -1,41 +1,60 @@
-// template iterals 
-const htmlBlocks = function (teamMembers) {
+ //const htmlBlocks = function (teamMembers) {
+// return `
+// <div> ${teamMembers} </div>
+
+// `
+//}
+
+function appendManager(manager) {
     return `
-    <div> ${teamMembers} </div>
+        <div class="card employee-card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">${manager.name}</h2>
+        </div>
+        <div class="card-body"> 
+            <ul class="list-group">
+                <li class="list-group-item">ID: </span>${manager.id}</li>
+                <li class="list-group-item">Email: </span>${manager.email}</li>
+                <li class="list-group-item">GitHub: </span>${manager.officeNumber}</li>
+            </ul>
+        </div>
+    </div>
+    `
+
+}
+
+function appendEngineer(employee) {
+    return `
+    <div class="card employee-card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">${employee.name}</h2>
+        </div>
+        <div class="card-body"> 
+            <ul class="list-group">
+                <li class="list-group-item">ID: </span>${employee.id}</li>
+                <li class="list-group-item">Email: </span>${employee.email}</li>
+                <li class="list-group-item">GitHub: </span>${employee.github}</li>
+            </ul>
+        </div>
+    </div>
     `
 }
 
-function appendManager (manager) {
-    return `
-    <h2>${manager.name}</h2>
-    <ul>
-        <li><span class="title">ID: </span>${manager.id}</li>
-        <li><span class="title">Email: </span>${manager.email}</li>
-        <li><span class="title">Office #: </span>${manager.officeNumber}</li>
-    </ul>
-    `
 
-}
-
-function appendEngineer (employee) {
+function appendIntern(employee) {
     return `
-    <h2>${employee.name}</h2>
-    <ul>
-        <li><span class="title">ID: </span>${employee.id}</li>
-        <li><span class="title">Email: </span>${employee.email}</li>
-        <li><span class="title">GitHub: </span>${employee.github}</li>
-    </ul>
-    `
-}
-
-function appendIntern (employee) {
-    return `
-    <h2>${employee.name}</h2>
-    <ul>
-        <li><span class="title">ID: </span>${employee.id}</li>
-        <li><span class="title">Email: </span>${employee.email}</li>
-        <li><span class="title">School: </span>${employee.school}</li>
-    </ul>
+    <div class="card employee-card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="card-title">${employee.name}</h2>
+        </div>
+        <div class="card-body"> 
+            <ul class="list-group">
+                <li class="list-group-item">ID: </span>${employee.id}</li>
+                <li class="list-group-item">Email: </span>${employee.email}</li>
+                <li class="list-group-item">School: </span>${employee.school}</li>
+            </ul>
+        </div>
+    </div>
     `
 }
 
@@ -48,15 +67,53 @@ function generateHTML(teamArray) {
         const member = teamArray[i]
 
         if (role === "Manager") employeeCard.push(appendManager(member))
-        else if(role === "Engineer") employeeCard.push(appendEngineer(member))
-        else if(role === "Intern") employeeCard.push(appendIntern(member))
+        else if (role === "Engineer") employeeCard.push(appendEngineer(member))
+        else if (role === "Intern") employeeCard.push(appendIntern(member))
     }
 
-    return htmlBlocks(employeeCard.join(''));
+    //return htmlBlocks(employeeCard.join(''));
+
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>My Team</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 jumbotron mb-3 team-heading bg-danger">
+                    <h1 class="text-center text-white">Meet the Team!</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="row team-area col-12 d-flex justify-content-center">
+                ${employeeCard.join('')}
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+        `;
+
 };
 
 
 
-
-
 module.exports = generateHTML;
+
+
+
+
+
+
+
