@@ -1,3 +1,4 @@
+// append manager card to HTML page
 function appendManager(manager) {
     return `
         <div class="card employee-card">
@@ -15,7 +16,7 @@ function appendManager(manager) {
     `
 
 }
-
+// append engineer card to HTML page
 function appendEngineer(employee) {
     return `
     <div class="card employee-card">
@@ -33,7 +34,7 @@ function appendEngineer(employee) {
     `
 }
 
-
+// append intern card to HTML page
 function appendIntern(employee) {
     return `
     <div class="card employee-card">
@@ -55,17 +56,19 @@ function appendIntern(employee) {
 
 function generateHTML(teamArray) {
     const employeeCard = [];
+    // loops through each employee 
     for (let i = 0; i < teamArray.length; i++) {
         const role = teamArray[i].getRole();
         const member = teamArray[i]
-
+        
+        // push information for each employee to HTML
         if (role === "Manager") employeeCard.push(appendManager(member))
         else if (role === "Engineer") employeeCard.push(appendEngineer(member))
         else if (role === "Intern") employeeCard.push(appendIntern(member))
     }
 
-    //return htmlBlocks(employeeCard.join(''));
-
+   
+    // return HTML template and style (bootstrap)
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -101,7 +104,7 @@ function generateHTML(teamArray) {
 };
 
 
-
+// export module
 module.exports = generateHTML;
 
 

@@ -1,18 +1,20 @@
-//import file system
+//import file system, inquirer, and path
 const fs = require("fs");
-//import inquirer 
 const inquirer = require("inquirer");
-
 const path = require("path");
 
+// import modules for each role
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 
+// import HTML template
 const generateHTML = require("./src/template");
 
+// creates empty array for team members
 const teamArray = [];
 
+// returns questions relating to manager role 
 const managerPrompt = () => {
     return inquirer.prompt([
         {
@@ -33,6 +35,7 @@ const managerPrompt = () => {
             message: "Enter manager's office number:"
         }
     ]) 
+    // pushes manager data to team array
     .then(managerData => {
         const manager = new Manager (managerData.managerName, managerData.managerId, managerData.managerEmail, managerData.managerOfficeNum)
         teamArray.push(manager);
@@ -40,6 +43,7 @@ const managerPrompt = () => {
     }) 
 }; 
 
+// returns questions relating to engineer or intern role 
 const employeePrompt = () => {
     return inquirer.prompt([
         {
@@ -66,6 +70,7 @@ const employeePrompt = () => {
             type: "input",
             name: "github",
             message: "If Engineer, enter Githib username.",
+            // returns this questions only if 'Engineer' is selected
             when: ({employee}) => {
                 if (employee === "Engineer") {
                     return true;
@@ -78,6 +83,7 @@ const employeePrompt = () => {
             type: "input",
             name: "school",
             message: "Enter the name of the school the intern attended:",
+            // returns this questions only if 'Intern' is selected
             when: ({employee}) => {
                 if (employee === "Intern") {
                     return true;
@@ -97,6 +103,7 @@ const employeePrompt = () => {
         }
     ])
 
+     // pushes engineer and/or intern data to team array
     .then(employeeData => {
         if (employeeData.employee === "Engineer") {
             const newEmployee = new Engineer(employeeData.employeeName, employeeData.employeeId, employeeData.employeeEmail, employeeData.github)
@@ -105,9 +112,10 @@ const employeePrompt = () => {
             const newEmployee = new Intern(employeeData.employeeName, employeeData.employeeId, employeeData.employeeEmail, employeeData.school) 
             teamArray.push(newEmployee);
         }
-
+        // if 'Yes' is selected, return employee questions 
         if (employeeData.confirmAddNew === "Yes") 
         return employeePrompt();
+         // if 'No' is selected, return team array 
         else if (employeeData.confirmAddNew === "No")
         return teamArray;
         console.log(teamArray);
@@ -117,6 +125,7 @@ const employeePrompt = () => {
 
 const writeFile = data => {
     console.log(data);
+    // write HTML 
     fs.writeFile("./dist/index.html", data, err => {
         if (err) {
             console.log(err);

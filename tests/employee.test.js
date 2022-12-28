@@ -2,6 +2,7 @@ const { it } = require('node:test');
 const { describe } = require('yargs');
 const Employee = require('../lib/employee'); 
 
+// creates employee object
 describe('Employee', () => {
     it('should create new employee and return as object', () => {
         const employee = new Employee('Tom', '1234', 'tom@mail.com');
@@ -12,6 +13,7 @@ describe('Employee', () => {
     })
 });
 
+// tests getName method
 describe('getName', () => {
     it('should use getName method to return name', () => {
         const employee = new Employee('Tom', '1234', 'tom@mail.com');
@@ -20,6 +22,7 @@ describe('getName', () => {
     })
 });
 
+// tests getID method
 describe('getID', () => {
     it('should use getID method to return ID', () => {
         const employee = new Employee('Tom', '1234', 'tom@mail.com');
@@ -27,7 +30,7 @@ describe('getID', () => {
         expect(employee.getID()).toBe('1234');
     })
 });
-
+// tests getEmail method
 describe('getEmail', () => {
     it('should use getEmail method to return email', () => {
         const employee = new Employee('Tom', '1234', 'tom@mail.com');
@@ -36,6 +39,7 @@ describe('getEmail', () => {
     })
 });
 
+// tests getRole method
 describe('getRole', () => {
     it('should use getRole method to return role', () => {
         const employee = new Employee();
