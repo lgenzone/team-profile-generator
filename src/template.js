@@ -8,7 +8,7 @@ function appendManager(manager) {
         <div class="card-body"> 
             <ul class="list-group">
                 <li class="list-group-item">ID: ${manager.id}</li>
-                <li class="list-group-item">Email: ${manager.email}</li>
+                <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
                 <li class="list-group-item">GitHub: ${manager.officeNumber}</li>
             </ul>
         </div>
@@ -26,8 +26,8 @@ function appendEngineer(employee) {
         <div class="card-body"> 
             <ul class="list-group">
                 <li class="list-group-item">ID: ${employee.id}</li>
-                <li class="list-group-item">Email: ${employee.email}</li>
-                <li class="list-group-item">GitHub: ${employee.github}</li>
+                <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
+                <li class="list-group-item">GitHub: <a href="mailto:${employee.github}">${employee.github}</a></li>
             </ul>
         </div>
     </div>
@@ -42,11 +42,12 @@ function appendIntern(employee) {
             <h2 class="card-title">${employee.name}</h2>
         </div>
         <div class="card-body"> 
-            <ul class="list-group">
-                <li class="list-group-item">ID: ${employee.id}</li>
-                <li class="list-group-item">Email: ${employee.email}</li>
-                <li class="list-group-item">School: ${employee.school}</li>
-            </ul>
+        <ul class="list-group">
+            <li class="list-group-item">ID: ${employee.id}</li>
+            <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
+            <li class="list-group-item">School: ${employee.school}</li>
+        </ul>
+    
         </div>
     </div>
     `
