@@ -1,0 +1,10 @@
+
+.employee-card {
+    box-shadow: 4px 4px 4px gray;
+    margin: .75rem;
+    border: none;
+}
+
+.card-body {
+    background-color: white;
+}
