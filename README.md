@@ -11,7 +11,7 @@ Meet the Team! was created to help a software engineering team by generating an 
  Use the following command line to lauch the application: node.js <br/>
  After initiating the app, respond to each question. When finished, your HTML page will be created with all of the employee information that was provided. <br/>
 
- [Link to walkthrough video](https://drive.google.com/file/d/1lsN8bdkIhgBfbK14c0REqWkvSshKnV4u/view)
+ [Link to walkthrough video](https://drive.google.com/file/d/1p1so7VG4ZV6E7HS4jjOTFIklwaSb0cwK/view)
 
 ## Testing
 Testing required, but not yet completed. This Repository will be updated upon completion. 
